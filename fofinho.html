@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coração com Fotos e Texto</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #fff5f5;
+      font-family: Arial, sans-serif;
+    }
+
+    .heart-container {
+      position: relative;
+      width: 300px;
+      height: 300px;
+    }
+
+    .heart-container .heart {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      background: url('1.jpeg') no-repeat center/cover;
+      transform: rotate(-45deg);
+      margin: auto;
+    }
+
+    .heart-container .heart::before,
+    .heart-container .heart::after {
+      content: '';
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: inherit;
+      border-radius: 50%;
+    }
+
+    .heart-container .heart::before {
+      top: -75px;
+    }
+
+    .heart-container .heart::after {
+      left: 75px;
+    }
+
+    .text {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #fff;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .text h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+
+    .text p {
+      font-size: 16px;
+      margin: 5px 0 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="heart-container">
+    <div class="heart"></div>
+    <div class="text">
+      <h1>Te Amo ❤️</h1>
+      <p>Você é a razão do meu sorriso!</p>
+    </div>
+  </div>
+</body>
+</html>

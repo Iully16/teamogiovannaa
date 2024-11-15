@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gigiovanna</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #fee4fe;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .envelope-container {
+      position: relative;
+      width: 300px;
+      height: 200px;
+      cursor: pointer;
+    }
+
+    .envelope {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #f4aafc;
+      border: 2px solid #f3aff8;
+      border-radius: 5px;
+      overflow: hidden;
+      transition: transform 1s;
+    }
+
+    .envelope::before,
+    .envelope::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #edabf8;
+      border: 2px solid #f59bfa;
+      transform-origin: top center;
+      transition: transform 1s;
+    }
+
+    .envelope::before {
+      top: 0;
+    }
+
+    .envelope::after {
+      bottom: 0;
+      transform-origin: bottom center;
+    }
+
+    .letter {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 90%;
+      height: 120%;
+      margin: 0;
+      background: #fff;
+      border: 2px solid #f0b1f8;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transform: translate(-50%, -50%) translateY(100%);
+      transition: transform 1s;
+      z-index: -1;
+    }
+
+    .letter h1 {
+      margin: 0;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .letter p {
+      margin: 5px 0 0;
+      font-size: 16px;
+      color: #555;
+      text-align: center;
+    }
+
+    .envelope.open::before {
+      transform: rotateX(-180deg);
+    }
+
+    .envelope.open + .letter {
+      transform: translate(-50%, -50%) translateY(0);
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      clip-path: polygon(50% 0%, 100% 38%, 81% 100%, 50% 75%, 19% 100%, 0% 38%);
+      animation: floatUp 2s ease-in-out forwards;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-200px) scale(0.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="envelope-container" onclick="toggleEnvelope()">
+    <div class="envelope"></div>
+    <div class="letter">
+      <h1>Minha Gatinha..</h1>
+      <p>Em tão pouco tempo você ser tornou alguém tao importante pra mim, amo seu jeitinho, amo seu sorriso, amo sua boca, seu corpo
+        tudo em você. Quero te oferecer um amor traquilo, leve e generoso. Quero ser sua paz e te amar de mais.❤️</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleEnvelope() {
+      const envelope = document.querySelector('.envelope');
+      const envelopeContainer = document.querySelector('.envelope-container');
+      const rect = envelopeContainer.getBoundingClientRect(); // Pega a posição do envelope na tela
+
+      envelope.classList.toggle('open');
+
+      if (envelope.classList.contains('open')) {
+        // Criar os corações flutuantes quando o envelope abrir
+        for (let i = 0; i < 20; i++) {
+          const heart = document.createElement('div');
+          heart.classList.add('heart');
+
+          // Centralizar os corações no envelope
+          heart.style.left = `${rect.left + rect.width / 2 - 10}px`; // Centraliza horizontalmente
+          heart.style.top = `${rect.top + rect.height / 2}px`; // Sai do meio vertical do envelope
+          heart.style.animationDelay = `${Math.random()}s`;
+          document.body.appendChild(heart);
+
+          // Remover o coração após a animação
+          heart.addEventListener('animationend', () => {
+            heart.remove();
+          });
+        }
+      }
+    }
+  </script>
+</body>
+</html>

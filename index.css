@@ -1,0 +1,39 @@
+body {
+    color:rgb(19, 18, 18);
+    background-image: url('4.jpeg');
+    font-family: sans-serif;
+  }
+  ul{
+      display: flex;
+      justify-content: space-between;
+      list-style-type: none;
+      padding: 26px ;
+      font-family: sans-serif;
+  }
+  
+  a{
+      color: rgb(2, 2, 2);
+      text-decoration: none;
+  }
+  
+  img{
+    float: left; 
+    width: 500px;
+    height: 300px;
+    border-radius: 15px;  
+    padding: 16px;
+    float: center;
+  }
+  
+  .center{
+    text-align: left;
+  
+  }
+  
+  .costum-bar{
+    border: none;
+    height: 100px;
+    background-color: #fecefd; 
+    width: 90%; 
+    margin: 50px auto;
+  }
